@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,13 +26,13 @@ public class WallDetection : MonoBehaviour
         if (other.GetComponent<WallIdentifier>())
         {
             textBox.text = clearedWall;
-            ClearText();
+            StartCoroutine(ClearText());
         }
     }
 
-    async void ClearText()
+    IEnumerator ClearText()
     {
-        await Task.Delay(1800);
+        yield return new WaitForSeconds(1.8f);
         if (textBox.text == clearedWall && textBox != null)
         {
             textBox.text = null;
